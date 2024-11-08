@@ -2,7 +2,7 @@ const axios = require('axios').default;
 const config = require('../config/config.json');
 
 module.exports.checkPermission = async (player) => {
-    const discordID = GetPlayerIdentifier(player, 4).replace("discord:", "");
+    const discordID = GetPlayerIdentifierByType(player, 'discord').replace("discord:", "");
     
     try {
         const { data } = await axios.get(`https://discord.com/api/guilds/${config.permissions.guild_id}/members/${discordID}`, {
